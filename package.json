@@ -1,0 +1,23 @@
+{
+  "name": "ecmall",
+  "version": "1.0.0",
+  "description": "商城系统(CRUD)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/irishhq/ECMall.git"
+  },
+  "author": "Iris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irishhq/ECMall/issues"
+  },
+  "homepage": "https://github.com/irishhq/ECMall#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql": "^2.16.0"
+  }
+}
