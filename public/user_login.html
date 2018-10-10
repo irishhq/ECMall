@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>用户登录</title>
+</head>
+<body>
+	<p>用户名:<input type="text" id="uname" value=""/></p>
+	<p>密码: <input type="password" value="" id="upwd"/></p>
+	<input type="button" value="登录" onclick="login()"/>
+	<script src="common.js"></script>
+	<script>
+		function login(){
+			var xhr = new createXhr();
+
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200)
+				{
+					var res = xhr.responseText;
+					document.write(res);
+				}
+			}
+			var uname = $("uname").value;
+			var upwd = $("upwd").value;
+			xhr.open("post", "/user/login", true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			var formData = "uname=" + uname + "&upwd=" + upwd;
+			xhr.send(formData);
+//			console.log(formData);
+		}
+	</script>
+</body>
+</html>
