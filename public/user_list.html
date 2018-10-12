@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>用户列表</title>
+</head>
+<body id="content" onload="loadUsers()">
+	<script src="common.js"></script>
+	<script>
+		function loadUsers(){
+			var xhr = new createXhr();
+
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200)
+				{
+					var res = xhr.responseText;
+					var users = JSON.parse(res);
+
+					var list = "<table border='1px'>"
+								+ "<tr>"
+								+ "<th>ID</th>"
+								+ "<th>用户昵称</th>"
+								+ "<th>密码</th>"
+								+ "<th>邮箱</th>"
+								+ "<th>联系方式</th>"
+								+ "<th>头像</th>"
+								+ "<th>用户姓名</th>"
+								+ "<th>性别</th>"
+								+ "<th>操作</th>"
+								+ "</tr>"
+					for ( var i = 0; i < users.length; i++ ) {
+						var user = users[i];
+						var gender;
+						if (user.gender == 1) {
+							gender = "男";
+						} else if (user.gender == 0) {
+							gender = "女";
+						} else {
+							gender = "不详";
+						}
+						list += "<tr>"
+								+ "<td>" + user.uid + "</td>"
+								+ "<td>" + user.uname + "</td>"
+								+ "<td>" + user.upwd + "</td>"
+								+ "<td>" + user.email + "</td>"
+								+ "<td>" + user.phone + "</td>"
+								+ "<td>" + user.avatar + "</td>"
+								+ "<td>" + user.user_name + "</td>"
+								+ "<td>" + gender + "</td>"
+								+ "<td><a id='delete' href='javascript:void(0)' onclick='deleteUser(" + user.uid + ")'>删除</a>&nbsp;<a href='user_update.html?uid=" + user.uid + "'>修改</a></td>"
+								+ "</tr>"
+					}
+				}
+				list += "</table>";
+				$("content").innerHTML = list;
+			}
+			xhr.open("get", "/user/list", true);
+			xhr.send(null);
+		}
+		function deleteUser(uid) {
+			if (window.confirm("确认删除?")) {
+				var xhr = new createXhr();
+				xhr.onreadystatechange = function() {
+					if ( 4 == xhr.readyState && 200 == xhr.status) {
+						var res = xhr.responseText;
+						loadUsers();
+						if (res == "1") {
+							alert("删除成功");
+						} else {
+							alert("删除失败");
+						}
+
+					}
+				};
+				xhr.open("get", "/user/delete?uid=" + uid, true);
+				xhr.send(null);
+			}
+		}
+	</script>
+</body>
+</html>
