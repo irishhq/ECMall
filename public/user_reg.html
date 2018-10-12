@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>用户注册</title>
+</head>
+<body>
+<ul id="regInfo">
+    <li>用户昵称<input type="text" name="" id="uname" onfocus="getInfo()" onblur="checkUname()" required="required" /><span id="naInfo"></span></li>
+    <li>密码<input type="password" name="" id="upwd" required="required" /></li>
+    <li>确认密码<input type="password" name="" id="confirpwd"" required="required"  onblur="checkPwd()" /><span id="pwdInfo"/></span></li>
+    <li>邮箱<input type="email" name="" id="email" required="required" onblur="checkEmail()" /><span id="emInfo"></span></li>
+    <li>手机号<input type="number" name="" id="phone" required="required" onblur="checkPhone()" /><span id="phInfo"></span></li>
+    <li>头像<input type="file" name="" id="avatar" required="required" /></li>
+    <li>用户姓名<input type="text" name="" id="user_name" required="required" /></li>
+    <li>性别:
+      <select id="gender">
+        <option value="1">男</option>
+        <option value="0">女</option>
+        <option value="2" selected="selected">保密</option>
+      </select>
+    </li>
+    <li><input type="button" value="注册" onclick="register()"></li>
+</ul>
+<script src="common.js"></script>
+<script type="text/javascript">
+  var isRegister = false;
+  function getInfo() {
+    $("naInfo").innerHTML = "6-12位字符之间";
+  }
+
+  function checkUname() {
+    var uname = $("uname").value;
+    var xhr = new createXhr();
+    xhr.onreadystatechange = function () {
+      if ( 4 == xhr.readyState && 200 == xhr.status) {
+        var res = xhr.responseText;
+        if (res == "1") {
+          $("naInfo").innerHTML = "用户名被占用";
+          isRegister = false;
+        } else if (res == "0") {
+          $("naInfo").innerHTML = "√";
+          isRegister = true;
+        } else if (res == "2") {
+          $("naInfo").innerHTML = "用户名不能为空";
+          isRegister = false;
+        }
+      }
+    }
+    xhr.open("get", "/user/checkUname?uname=" + uname, true);
+    xhr.send(null);
+  }
+
+  function checkPwd(){
+    console.log(111111);
+    var upwd = $("upwd").value;
+    var confirpwd = $("confirpwd").value;
+    if (!upwd) {
+      $("pwdInfo").innerHTML = "用户密码不能为空";
+      isRegister = false;
+      return;
+    }
+    if ( upwd == confirpwd) {
+      $("pwdInfo").innerHTML = "√";
+      isRegister = true;
+    } else {
+      $("pwdInfo").innerHTML = "两次密码输入不一致,请重新输入";
+      isRegister = false;
+    }
+  }
+
+  function checkEmail() {
+    var email = $("email").value;
+    var xhr = new createXhr();
+    xhr.onreadystatechange = function () {
+      if ( 4 == xhr.readyState && 200 == xhr.status) {
+        var res = xhr.responseText;
+        if (res == "1") {
+          $("emInfo").innerHTML = "邮箱被占用";
+          isRegister = false;
+        } else if (res == "0") {
+          $("emInfo").innerHTML = "√";
+          isRegister = true;
+        } else if (res == "2") {
+          $("emInfo").innerHTML = "邮箱不能为空";
+          isRegister = false;
+        }
+      }
+    }
+    xhr.open("get", "/user/checkEmail?email=" + email, true);
+    xhr.send(null);
+  }
+
+  function checkPhone() {
+    var phone = $("phone").value;
+    var xhr = new createXhr();
+    xhr.onreadystatechange = function () {
+      if ( 4 == xhr.readyState && 200 == xhr.status) {
+        var res = xhr.responseText;
+        if (res == "1") {
+          $("phInfo").innerHTML = "手机号被占用";
+          isRegister = false;
+        } else if (res == "0") {
+          $("phInfo").innerHTML = "√";
+          isRegister = true;
+        } else if (res == "2") {
+          $("phInfo").innerHTML = "手机号不能为空";
+          isRegister = false;
+        }
+      }
+    }
+    xhr.open("get", "/user/checkPhone?phone=" + phone, true);
+    xhr.send(null);
+  }
+
+  function register() {
+    if (isRegister == false) {
+      alert("请检查注册信息!");
+      return;
+    }
+    var xhr = new createXhr();
+    xhr.onreadystatechange = function () {
+      var res = xhr.responseText;
+      console.log(res);
+      if (res == "2") {
+        alert("请完善注册信息");
+      }
+      window.location.href="./user_list.html";
+    }
+    xhr.open("post", "/user/register", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    var uname = $("uname").value;
+    var upwd = $("upwd").value;
+    var email = $("email").value;
+    var phone = $("phone").value;
+    var avatar = $("avatar").value;
+    var user_name = $("user_name").value;
+    var gender = $("gender").value;
+    var formData = "uname=" + uname + "&upwd=" + upwd + "&email=" + email
+                  + "&phone=" + phone + "&avatar=" + avatar
+                  + "&user_name=" + user_name + "&gender=" + gender;
+    xhr.send(formData);
+  }
+
+</script>
+</body>
+</html>
