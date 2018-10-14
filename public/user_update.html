@@ -14,7 +14,13 @@
 			<li>手机号<input type="number" name="" id="phone"/></li>
 			<li>头像<input type="file" name="" id="avatar"/><p id="avaturl"></p></li>
 			<li>用户姓名<input type="text" name="" id="user_name"/></li>
-			<li>性别:<input type="radio" name="gender" id="male"/>男<input type="radio" name="gender" id="female"/>女<input type="radio" name="gender" id="unknown"/>不详</li>
+      <li>性别:
+      <select id="gender">
+        <option value="1">男</option>
+        <option value="0">女</option>
+        <option value="2" selected="selected">保密</option>
+      </select>
+    </li>
       <input type="button" value="修改" onclick="update()" />
 		</ul>
 	</form>
@@ -40,11 +46,11 @@
             $("avaturl").innerHTML = "当前头像" + user.avatar;
             $("user_name").value = user.user_name;
             if (user.gender == 1) {
-              $("male").checked = true;
+              $("gender").options[0].selected = "selected";
             } else if (user.gender == 0) {
-              $("female").checked = true;
+              $("gender").options[1].selected = "selected";
             } else {
-              $("unknown").checked = true;
+              $("gender").options[2].selected = "selected";
             }
           }
         }
