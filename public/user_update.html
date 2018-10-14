@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>更新用户信息</title>
+</head>
+<body onload="getInfo()">
+	<form>
+		<ul id="info">
+			<li>ID<input type="hidden" name="" id="uid"/></li>
+			<li>用户昵称<input type="text" name="" id="uname"/></li>
+			<li>密码<input type="password" name="" id="upwd" data-default=""/></li>
+			<li>确认密码<input type="password" name="" id="confirpwd"/></li>
+			<li>邮箱<input type="email" name="" id="email"/></li>
+			<li>手机号<input type="number" name="" id="phone"/></li>
+			<li>头像<input type="file" name="" id="avatar"/><p id="avaturl"></p></li>
+			<li>用户姓名<input type="text" name="" id="user_name"/></li>
+			<li>性别:<input type="radio" name="gender" id="male"/>男<input type="radio" name="gender" id="female"/>女<input type="radio" name="gender" id="unknown"/>不详</li>
+      <input type="button" value="修改" onclick="update()" />
+		</ul>
+	</form>
+	<script src="common.js"></script>
+	<script>
+    var updateArr = [];
+		function getInfo(){
+      var urlParam = new URLSearchParams(location.search);
+      var uid = urlParam.get('uid');
+      // console.log(uid);
+      var xhr = new createXhr();
+      xhr.onreadystatechange = function(){
+        if ( 200 == xhr.status && 4 == xhr.readyState ) {
+          var res = xhr.responseText;
+          var user = JSON.parse(res);
+          if (res != "0") {
+            $("uid").value = user.uid;
+            $("uname").value = user.uname;
+            $("upwd").value = user.upwd;
+            $("email").value = user.email;
+            $("phone").value = user.phone;
+            console.log(user.avatar);
+            $("avaturl").innerHTML = "当前头像" + user.avatar;
+            $("user_name").value = user.user_name;
+            if (user.gender == 1) {
+              $("male").checked = true;
+            } else if (user.gender == 0) {
+              $("female").checked = true;
+            } else {
+              $("unknown").checked = true;
+            }
+          }
+        }
+      }
+      xhr.open("get", "/user/selectUser?uid=" + uid, true);
+      xhr.send(null);
+
+      var info = $("info");
+      info.onchange = function(event) {
+        var target = event.target.id;
+        updateArr.push(target);
+        console.log(updateArr);
+      }
+		}
+
+    function update() {
+      var xhr = new createXhr();
+      xhr.onreadystatechange = function () {
+        var res = xhr.responseText;
+      }
+      xhr.open("post", "/user/update", true);
+
+      var formData = "";
+      for (var i = 0; i < updateArr.length; i++) {
+        var node = updateArr[i];
+        var value = document.getElementById(node).value;
+        formData += `&${updateArr[i]}` + "=" + value;//es6模板字符串实现字符串输出变量值
+      }
+      formData = formData.substring(1, formData.length) + "&uid=" + $("uid").value;
+      console.log(formData);
+
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      xhr.send(formData);
+    }
+	</script>
+</body>
+</html>
+
