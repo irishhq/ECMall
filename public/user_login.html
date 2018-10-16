@@ -3,11 +3,129 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title>用户登录</title>
+	<style type="text/css">
+		/*general start*/
+		html, body, p{
+			margin: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		input{
+			border: none;
+		}
+		/*general end*/
+		/*header start*/
+		header{
+			height: 52px;
+			margin-bottom: 30px;
+			margin-top: 20px;
+		}
+		/*header end*/
+		/*login start*/
+		#container {
+			width: 100%;
+			height: 560px;
+			background: url("./img/bg.png");
+		}
+		#cover {
+			color: #fff;
+			width: 280px;
+			height: 296px;
+			float: right;
+			margin-right: 122px;
+			margin-top: 122px;
+			background-color: rgba(0,0,0,.3);
+		}
+
+		#cover .txt{
+			width: 253px;
+			height: 277px;
+			padding: 10px;
+			overflow: hidden;
+		}
+
+		#cover .txt p{
+			font-size: 18px;
+			height: 40px;
+			border-bottom: 1px solid #f0f0f0;
+			line-height: 40px;
+		}
+		#cover .txt p span a{
+			font-size: 12px;
+			position: relative;
+			right: -84px;
+			color: #fff;
+		}
+		#cover .txt .text input{
+			border: 1px solid #ddd;
+			padding: 10px 20px;
+			width: 253px;
+			margin-top: 16px;
+		}
+		#cover .txt .chose {
+			margin-bottom: 10px;
+			height: 19px;
+			font-size: 10px;
+		}
+		#cover .txt .chose .checkbox{
+			position: relative;
+			top: 2px;
+		}
+		#cover .txt .chose span{
+			float: right;
+		}
+		#cover .txt .text span img{
+			position: relative;
+			top: -34px;
+			right: -224px;
+		}
+		.btn-login{
+			color: #fff;
+			line-height: 35px;
+			text-align: center;
+			font-weight: bold;
+			margin: 0 auto;
+			width: 276px;
+			border-radius: 2px;
+			background: linear-gradient(45deg, #27b0f6 0%, #0aa1ed 100%);
+		}
+		#showResult{
+			width: 258px;
+			height: 30px;
+			position: absolute;
+			top: 330px;
+			right: 135px;
+			display: inline-block;
+			font-size: 12px;
+			padding-left: 8px;
+		}
+		/*login end*/
+	</style>
 </head>
 <body>
-	<p>用户名:<input type="text" id="uname" value=""/></p>
-	<p>密码: <input type="password" value="" id="upwd"/></p>
-	<input type="button" value="登录" onclick="login()"/>
+	<header></header>
+	<div id="container">
+		<div id="cover">
+			<div class="txt">
+				<p>登录学子商城<span><a href="user_reg.html">新用户注册</a></span></p>
+				<div class="text">
+					<input type="text" id="uname" value="" placeholder="请输入您的用户名" />
+					<span><img src="./img/yhm.png"></span>
+				</div>
+				<div class="text">
+					<input type="password" value="" id="upwd" placeholder="请输入您的密码" />
+					<span><img src="./img/mm.png" alt=""></span>
+				</div>
+				<div class="chose">
+					<input type="checkbox" class="remenber" name="">自动登录
+					<span>忘记密码?</span>
+				</div>
+				<input type="button" class="btn-login" value="登录" onclick="login()"/>
+			</div>
+		</div>
+	</div>
+	<div id="showResult"></div>
 	<script src="common.js"></script>
 	<script>
 		function login(){
@@ -26,7 +144,6 @@
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			var formData = "uname=" + uname + "&upwd=" + upwd;
 			xhr.send(formData);
-//			console.log(formData);
 		}
 	</script>
 </body>
