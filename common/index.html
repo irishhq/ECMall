@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>商城首页</title>
     <link rel="stylesheet" href="./css/bootstrap.css"/>
-    <link rel="stylesheet" href="./css/homepage_product_recommend.css"/>
+    <!--<link rel="stylesheet" href="./css/homepage_product_recommend.css"/>-->
+    <link rel="stylesheet" href="./css/base.css"/>
 </head>
 <body>
-    <iframe MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0 SCROLLING=no src="header.html" height="auto" width="100%"></iframe>
+    <iframe class="my-header" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0 SCROLLING=no src="header.html" height="auto" width="100%"></iframe>
     <!--<iframe MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0 SCROLLING=no  src="public/common/footer.html" height="" width="100%"></iframe>-->
     <!--#include file="./common/header.html" -->
     <div class="container">
@@ -15,7 +16,7 @@
         <div class="row">
             <div id="carousel" class="carousel  w-100" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0"></li>
+                    <li data-target="#carousel"  class="active" data-slide-to="0"></li>
                     <li data-target="#carousel" data-slide-to="1"></li>
                     <li data-target="#carousel" data-slide-to="2"></li>
                     <li data-target="#carousel" data-slide-to="3"></li>
@@ -43,82 +44,89 @@
             </div>
         </div>
         <!-- carousel end -->
-        <div class="floor-content">
-            <!-- start first row -->
-            <!-- <div class="row row1"> -->
-            <!-- product item start -->
-            <div>
-                <!-- text describtion start-->
-                <div class="desc">
-                    <h2>Apple MacBook Air系列</h2>
-                    <p id="details">酷睿双核i5处理器|256GB SSD|8GB内存|英特尔HD显卡620含共享内存</p>
-                    <p id="price">&yen;<span>6980.00</span></p>
-                    <input type="button" name="" value="查看详情"/>
+        <!-- 首页内容模块1 start-->
+        <div class="row mt-3 mb-3 pro-wrap">
+            <div class="mt-3 col-12 p-0">
+                <!-- 标题 -->
+                <div class="navbar navbar-light border-bottom border-secondary">
+                    <a href="#" class="navbar-brand font-weight-bold text-secondary">
+                        <img src="img/icon/computer_icon.png" alt="" class="mr-3"/>首页推荐/1F
+                    </a>
                 </div>
-                <!-- text describtion end -->
-                <img src="./img/study_computer_img1.png">
-            </div>
-            <!-- product item end -->
-            <!-- product item start -->
-            <div>
-                <div class="desc">
-                    <h2>小米Air 金属超轻薄</h2>
-                    <p id="details">酷睿双核i5处理器|256GB SSD|8GB内存|英特尔HD显卡</p>
-                    <p id="price">&yen;<span>3488.00</span></p>
-                    <input type="button" name="" value="查看详情"/>
+                <!-- 第一行内容 左右布局 -->
+                <div class="row mt-4">
+                    <div class="col-md-7 col-sm-12">
+                        <div class="card flex-md-row border-0">
+                            <div class="card-body d-flex flex-column align-items-start ml-4 mt-4">
+                                <h4>Apple MacBook</h4>
+                                <h4>Air系列</h4>
+                                <h6 class="text-muted font-small">酷睿双核i5处理器|256GB SSD|8GB内存|英特尔HD显卡620含共享内存</h6>
+                                <span class="price">&yen;6980.00</span>
+                                <a href="#" class="btn btn-primary">查看详情</a>
+                            </div>
+                            <img src="img/study_computer_img1.png" alt="" class="img-fluid my-prodimg1"/>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-12 pl-0">
+                        <div class="card flex-md-row border-0 second-card">
+                            <div class="card-body d-flex flex-column align-items-start ml-4 mt-4">
+                                <h4>Apple MacBook</h4>
+                                <h4>Air系列</h4>
+                                <h6 class="text-muted font-small">酷睿双核i5处理器|256GB SSD|8GB内存|英特尔HD显卡620含共享内存</h6>
+                                <span class="price">&yen;6980.00</span>
+                                <a href="#" class="btn btn-primary">查看详情</a>
+                            </div>
+                            <img src="img/study_computer_img2.png" alt="" class="img-fluid my-prodimg2"/>
+                        </div>
+                    </div>
                 </div>
-                <img src="./img/study_computer_img2.png">
-            </div>
-            <!-- product item end -->
-            <!-- </div> -->
-            <!-- end first row -->
-            <!-- start second row -->
-            <!-- <div class="row row2"> -->
-            <!-- product item start -->
-            <div>
-                <div class="desc">
-                    <h3>联想E480C 轻薄系列</h3>
-                    <p id="price">&yen;<span>5399.00</span></p>
-                    <input type="button" name="" value="查看详情"/>
-                </div>
-                <img src="./img/study_computer_img3.png">
-            </div>
-            <!-- product item end -->
-            <!-- product general item start -->
-            <div class="product">
-                <img src="./img/study_computer_img4.png">
-                <div class="desc">
-                    <h6>华硕RX310 金属超极本</h6>
-                    <p id="price">&yen;<span>4966.00</span></p>
-                    <input type="button" name="" value="查看详情"/>
-                </div>
-            </div>
-            <!-- product general item end -->
-            <!-- product general item start -->
-            <div class="product">
-                <img src="./img/study_computer_img5.png">
-                <div class="desc">
-                    <h6>联想小新700 电竞版游戏本</h6>
-                    <p id="price">&yen;<span>6299.00</span></p>
-                    <input type="button" name="" value="查看详情"/>
-                </div>
-            </div>
-            <!-- product general item end -->
-            <!-- product general item start -->
-            <div class="product">
-                <img src="./img/study_computer_img3.png">
-                <div class="desc">
-                    <h6>戴尔灵越燃7000 轻薄窄边</h6>
-                    <p id="price">&yen;<span>5199.00</span></p>
-                    <input type="button" name="" value="查看详情"/>
+                <!-- 第二行内容-->
+                <div class="row mt-2 my-row2">
+                    <div class="col-md-5 col-sm-12 pr-0">
+                        <div class="card flex-md-row border-0 third-card align-items-center">
+                            <div class="card-body d-flex flex-column align-items-start">
+                                <h5 class="mb-0">联想E480C 轻薄系列</h5>
+                                <span class="price">&yen;5299.00</span>
+                                <a href="#" class="btn btn-primary">查看详情</a>
+                            </div>
+                            <img src="img/study_computer_img3.png" alt="" class="img-fluid my-prodimg3"/>
+
+                        </div>
+                    </div>
+                    <!-- 第二行-右侧-相同布局三栏-->
+                    <div class="col-md-7 col-sm-12 d-flex flex-md-row flex-sm-column justify-content-md-between text-center pl-0">
+                        <div class="col-md-4 p-0 pl-2">
+                            <div class="card border-0 flex-column d-flex align-items-center fourth-card">
+                                <img src="img/study_computer_img4.png" class="img-fluid" alt=""/>
+                                <h6 class="font-small">华硕RX310 金属超极本</h6>
+                                <span class="price">&yen;5299.00</span>
+                                <a href="#" class="btn btn-primary w-50 m-auto">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 p-0 pl-2">
+                            <div class="card border-0 flex-column d-flex align-items-center fifth-card">
+                                <img src="img/study_computer_img3.png" class="img-fluid" alt=""/>
+                                <h6 class="font-small">华硕RX310 金属超极本</h6>
+                                <span class="price">&yen;5299.00</span>
+                                <a href="#" class="btn btn-primary w-50 m-auto">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 p-0 pl-2">
+                            <div class="card border-0 flex-column d-flex align-items-center six-card">
+                                <img src="img/study_computer_img5.png" class="img-fluid" alt=""/>
+                                <h6 class="font-small">华硕RX310 金属超极本</h6>
+                                <span class="price">&yen;5299.00</span>
+                                <a href="#" class="btn btn-primary w-50 m-auto ">查看详情</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- product general item end -->
-            <!-- </div> -->
-            <!-- end second row -->
         </div>
+        <!-- 首页内容模块1 end-->
     </div>
     <div class="footerpage"></div>
+    <!--<iframe class="my-footer" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0 SCROLLING=no  src="footer.html" height="" width="100%"></iframe>-->
     <script src="js/jquery.min.js"></script>
     <script src="js/index.js"></script>
 </body>
