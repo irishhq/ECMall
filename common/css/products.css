@@ -1,0 +1,28 @@
+div.card{
+    border: none;
+    margin-top: 1rem;
+}
+.pagination li.page-item a{
+    border-radius: 20%;
+    margin: 0.1rem;
+}
+.page-link{
+    background-color: inherit;
+}
+.page-link:hover{
+    border: 1px solid #0aa1ed;
+}
+/*¹ºÎï³µ*/
+.chart>li:not(:first-child){
+    border-bottom: 1px dashed #999;
+    border-top: 1px dashed #999;
+}
+button.chart-btn-gray{
+    width: 1.5rem;
+    height: 1.5rem;
+    background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%);
+}
+input.chart-input{
+    width: 1.5rem;
+    height: 1.5rem;
+}

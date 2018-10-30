@@ -1,0 +1,79 @@
+/*@page index中的样式 start*/
+/*首页产品列表布局*/
+div.card{
+    height: 22rem;
+    background: #e8e8e8;
+}
+
+/*@override*/
+.card-body {
+    padding-right: 0;
+}
+.my-row2 .card{
+    height: 16rem;
+}
+
+.my-prodimg1{
+    width: 20rem;
+    height: 16rem;
+    margin-left: -10rem;
+    margin-top: 6rem;
+}
+.my-prodimg2{
+    width: 16rem;
+    height: 14rem;
+    margin-left: -5rem;
+    margin-right: 1rem;
+    margin-top: 7rem;
+}
+
+.my-prodimg3{
+    height: 10rem;
+    width: 20rem;
+    margin-top: 3rem;
+}
+@media screen and (max-width: 992px) and (min-width: 766px){
+    .pro-wrap{
+        width: 960px;
+    }
+}
+@media screen and (max-width: 767px){
+    body{
+        /*min-width: 400px;*/
+    }
+    div.card{
+        height: 35rem;
+        margin-bottom: 1rem;
+    }
+    /*微调对齐*/
+    .second-card{
+        margin-left: 1rem;
+    }
+    .third-card{
+        margin-right: 1rem;
+    }
+    .fourth-card, .fifth-card, .six-card{
+        margin-left: 0.5rem;
+    }
+    img.my-prodimg1{
+        width: 24rem;
+        height: 20rem;
+        margin-left: 2rem;
+        margin-top: -5rem;
+    }
+    img.my-prodimg2{
+        width: 16rem;
+        height: 14rem;
+        margin-left: 2rem;
+        margin-bottom: 3rem;
+    }
+    img.my-prodimg3{
+        height: 10rem;
+        width: 15rem;
+    }
+    .my-row2 div.card{
+        height: 20rem;
+    }
+}
+
+/*@page index中的样式 end*/

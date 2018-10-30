@@ -1,0 +1,47 @@
+.price {
+    font: 34px "simhei";
+    color: #0aa1ed;
+}
+
+.product-num > input {
+    width: 2.5rem;
+    height: 2.4rem;
+    position: relative;
+    top: 0.2rem;
+}
+
+.nav-tabs > li a {
+    color: #808080;
+}
+
+.nav-tabs > li a.active {
+    background: inherit !important;
+    font-weight: bold;
+    border-bottom: 2px solid #0aa1ed;
+}
+.tab-pane .active-border{
+    width: 5rem;
+    border-top: 3px solid #0aa1ed;
+}
+.tab-pane .active-border{
+    width: 5rem;
+    border-top: 3px solid #0aa1ed;
+}
+.tab-pane .first-border{
+    margin-left: 1rem;
+}
+
+.tab-pane .second-border{
+    margin-left: 7rem;
+}
+
+.introduction img:hover{
+    transform: none;
+}
+
+.promise>div>p:first-child,
+.promise>div>p:nth-child(3){
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0aa1ed;
+}
